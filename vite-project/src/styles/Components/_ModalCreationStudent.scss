@@ -1,0 +1,136 @@
+.ModalCreationStudent {
+    width: 25vw;
+    height: 40vh;
+    background-color: white;
+    position: fixed;
+    top: -100%;
+    left: 40%;
+    border-left: 4px solid var(--red-color);
+    border-right: 4px solid var(--red-color);
+    border-radius: 0 0 20px 20px;
+    transition: top 0.3s ease-in-out;
+    
+
+    button {
+        display: block;
+        margin: 10px auto;
+    }
+
+    &::after {
+        content: '';
+        width: 25px;
+        height: 25px;
+        background-color: var(--main-color);
+        position: absolute;
+        top: 97%;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+    }
+
+    .titleModalContent{
+        width: 100%;
+        height: 15%;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .creationStudentFormContent{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        .inputCreationContent{
+            width: 75%;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+
+            label{
+                color: black;
+                margin-bottom: 15px;
+            }
+            
+            input{
+                width: 100%;
+                height: 20px;
+                border-radius: 5px;
+                background-color: white;
+                border: 1px solid black;
+                color: black;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                padding: 5px 10px 5px 10px;
+            }
+        }
+    }
+
+    .creationStudentSubmitContent{
+        width: 100%;
+        height: 15%;
+        display: flex;
+        align-items: flex-start;
+
+        button{
+            border-radius: 8px;
+            border: 1px solid transparent;
+            padding: 0.6em 1.2em;
+            font-size: 1em;
+            font-weight: 500;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            background-color: var(--main-color);
+            cursor: pointer;
+            transition: border-color 0.25s;
+
+            &:hover{
+                background-color: var(--red-color);
+            }
+        }
+    }
+
+    .returnCreationStudentModal{
+        color: black;
+        width: 100%;
+        height: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        cursor: pointer;
+
+        .returnContentModal{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 25%;
+            height: 100%;
+            cursor: pointer;
+
+            p{
+                font-size: 10px;
+                color: rgb(109, 94, 94);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+    
+                svg{
+                    font-size: 25px;
+                    color: rgb(109, 94, 94);
+                }
+            }
+        }
+    }
+}
+
+.ModalOpen {
+    top: 15vh;
+    transition: top 0.3s ease-in-out;
+}
+
+.ModalClose {
+    transition: top 0.3s ease-in-out;
+    top: -100%;
+}
+
