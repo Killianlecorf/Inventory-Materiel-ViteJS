@@ -8,7 +8,7 @@
     border-left: 4px solid var(--red-color);
     border-right: 4px solid var(--red-color);
     border-radius: 0 0 20px 20px;
-    transition: top 0.3s ease-in-out;
+    transition: top 0.5s ease-in-out;
     
 
     button {
@@ -126,11 +126,11 @@
 
 .ModalOpen {
     top: 15vh;
-    transition: top 0.3s ease-in-out;
+    transition: top 0.5s ease-in-out;
 }
 
 .ModalClose {
-    transition: top 0.3s ease-in-out;
+    transition: top 0.5s ease-in-out;
     top: -100%;
 }
 
