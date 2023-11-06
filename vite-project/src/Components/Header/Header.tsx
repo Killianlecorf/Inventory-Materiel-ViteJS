@@ -17,6 +17,7 @@ const Header: React.FC<IHeader> = ({buttonCreateStudent}) => {
             <div className="navigationHeaderContent">
                 <button onClick={buttonCreateStudent} className="navigationButton">Create Material</button>
                 <NavLink to='/sendmail' style={{width: "100px"}}><button className="navigationButton">Send mail</button></NavLink>
+                <NavLink to='/lend' style={{width: "200px"}}><button className="navigationButton">Lend materials</button></NavLink>
             </div>
         </div>
     );
