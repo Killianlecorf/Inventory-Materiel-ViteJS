@@ -3,6 +3,7 @@ import HomePage from "./Pages/HomePage/HomePage"
 import StudentPage from "./Pages/StudentPage"
 import SendMail from "./Pages/SendMail"
 import LendPage from "./Pages/LendPage"
+import EditMaterialPage from "./Pages/EditMaterialPage"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="/students/:id" Component={StudentPage} />
         <Route path="/sendmail" Component={SendMail} />
         <Route path="/lend" Component={LendPage} />
+        <Route path="/editmaterial/:id" Component={EditMaterialPage} />
       </Routes>
     </BrowserRouter>
   )

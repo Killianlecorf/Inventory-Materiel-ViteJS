@@ -18,10 +18,31 @@ interface IInformationMaterials {
     date : Date;
 }
 
+interface IMailContent {
+    to : string;
+    subject: string;
+    text: string;
+}
+
 const LendComponents:React.FC<ILendComponents> = ({_id, email, materials, date}) => {
 
     const navigate = useNavigate()
     const [InformationMaterials, setInformationMaterials] = useState<IInformationMaterials>()
+    const sendMail: IMailContent={
+        to:email,
+        subject: "Rappel de prêt",
+        text : `Bonjour, Ce mail vous a était envoyé comme rappel pour ce materiel : ${InformationMaterials?.name} emprunter le ${formatDate(date)} `
+    }
+
+    const sendMailFunction = async () => {
+        try {
+            await fetchApi(`/service/send-email`, "POST", sendMail)
+            alert(`Un mail a était envoyé a ${email}`)
+            console.log("c'est bon");
+        } catch (error: any) {
+            console.log('erreur : ' + error);
+        }
+    }
 
     const deleteLendMaterial = async () => {
         try {
@@ -54,6 +75,7 @@ const LendComponents:React.FC<ILendComponents> = ({_id, email, materials, date})
             <p>date : {formatDate(date)}</p>
             <div className="buttonContent">
                 <button onClick={deleteLendMaterial}>fin du pret</button>
+                <button onClick={sendMailFunction}>Send mail</button>
             </div>
         </div>
     );
