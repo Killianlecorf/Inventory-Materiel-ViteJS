@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import fetchAPI from "../../utils/Request";
-import { useNavigate } from "react-router-dom";
+import redirectToPage from "../../utils/UrlRedirection";
 
 interface IModalCreationStudent {
     buttonCreateStudent: () => void;
@@ -22,9 +22,6 @@ const ModalCreationStudent: React.FC<IModalCreationStudent> = ({buttonCreateStud
         number: 0
     });
 
-    const navigate = useNavigate()
-
-
     const handleLogin = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const nameInput = event.target.name;
         const materialsText = event.target.value;
@@ -44,6 +41,7 @@ const ModalCreationStudent: React.FC<IModalCreationStudent> = ({buttonCreateStud
         
         let response = await fetchAPI(`/materials/`, 'POST', Material);
         if (response.ok) {
+            redirectToPage("/")
             console.log("c\'est bon");
         }
         if (response.status === 401) {
