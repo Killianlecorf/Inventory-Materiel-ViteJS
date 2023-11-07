@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Header from "../../Components/Header";
 import ModalCreationStudent from "../../Components/ModalCreationStudent";
-import MaterialsContent from "../../Components/MaterialsContent";
+import FormMail from "../../Components/FormMail";
 
 
-const HomePage = () => {
+const SendMail = () => {
+
     const [isVisible, setIsVisible] = useState(false);
 
     const toggleCreateStudentModal = () => {
@@ -13,11 +14,11 @@ const HomePage = () => {
 
     return (
         <div>
-            <Header buttonCreateStudent={toggleCreateStudentModal}/>
+            <Header buttonCreateStudent={toggleCreateStudentModal} />
             <ModalCreationStudent buttonCreateStudent={toggleCreateStudentModal} isVisible={isVisible}/>
-            <MaterialsContent />
+            <FormMail />
         </div>
     );
 };
 
-export default HomePage;
+export default SendMail;

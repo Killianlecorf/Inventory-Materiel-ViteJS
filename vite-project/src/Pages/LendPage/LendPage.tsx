@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Header from "../../Components/Header";
 import ModalCreationStudent from "../../Components/ModalCreationStudent";
-import MaterialsContent from "../../Components/MaterialsContent";
+import LendMaterialsContent from "../../Components/LendMaterialsContent";
 
+const LendPage = () => {
 
-const HomePage = () => {
     const [isVisible, setIsVisible] = useState(false);
 
     const toggleCreateStudentModal = () => {
@@ -13,11 +13,11 @@ const HomePage = () => {
 
     return (
         <div>
-            <Header buttonCreateStudent={toggleCreateStudentModal}/>
+            <Header buttonCreateStudent={toggleCreateStudentModal} />
             <ModalCreationStudent buttonCreateStudent={toggleCreateStudentModal} isVisible={isVisible}/>
-            <MaterialsContent />
+            <LendMaterialsContent />
         </div>
     );
 };
 
-export default HomePage;
+export default LendPage;
