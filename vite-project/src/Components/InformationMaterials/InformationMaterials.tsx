@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import fetchApi from "../../utils/Request";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import formatDate from "../../utils/FormatDate";
 
 interface IMaterialsComponents {
@@ -149,12 +149,16 @@ const InformationMaterials: React.FC<IInformationMaterials> = ({ id }) => {
     <div className="InformationMaterials">
       <div className="encadrement">
         <div className="informationMaterialsContent">
-          <p>Nom : {materials?.name}</p>
-          <p>Nombre : {materials?.number ? materials.number - getNumber.length : 0}</p>
+          <p>Name : {materials?.name}</p>
+          <p>Number : {materials?.number ? materials.number - getNumber.length : 0}</p>
         </div>
         <div className="deleteMaterials">
-          <p>Supprimer le matériel</p>
-          <button onClick={deleteMaterials}>Supprimer</button>
+          <p>Delete the maetrial</p>
+          <button onClick={deleteMaterials}>DELETE</button>
+          <p>edit the material</p>
+          <NavLink to={`/editmaterial/${id}`}>
+            <button>EDIT</button>
+          </NavLink>
         </div>
       </div>
       {displayForm()}
