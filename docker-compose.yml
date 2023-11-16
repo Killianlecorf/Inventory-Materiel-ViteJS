@@ -1,13 +1,9 @@
-version: '3'
+version: '3.8'
+
 services:
-  app:
+  vitejs:
     build:
-      context: ./
-      dockerfile: dockerfile.dev
-    image: inventory:latest
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - "7000:3000"
-    volumes:
-      - .:/app
-    environment:
-      NODE_ENV: development
+      - "4173:4173"
