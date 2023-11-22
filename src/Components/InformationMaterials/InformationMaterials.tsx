@@ -38,7 +38,7 @@ const InformationMaterials: React.FC<IInformationMaterials> = ({ id }) => {
     subject: "prêt de matériels",
     text: `Bonjour, Ce mail vous a été envoyé pour un prêt du matériel : ${
       materials?.name
-    } emprunté le ${materials?.date ? formatDate(materials.date) : ''} `,    
+    } emprunté le ${materials?.date ? formatDate(materials.date) : ''} et à rendre dans 1 mois. `,    
   };
 
   const sendMailFunction = async () => {
