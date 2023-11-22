@@ -31,7 +31,7 @@ const LendComponents:React.FC<ILendComponents> = ({_id, email, materials, date})
     const sendMail: IMailContent={
         to:email,
         subject: "Rappel de prêt",
-        text : `Bonjour, Ce mail vous a était envoyé comme rappel pour ce materiel : ${InformationMaterials?.name} emprunter le ${formatDate(date)} `
+        text : `Bonjour, Ce mail vous a était envoyé comme rappel pour ce materiel : ${InformationMaterials?.name} emprunter le ${formatDate(date)}`
     }
 
     const sendMailFunction = async () => {
