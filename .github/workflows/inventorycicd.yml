@@ -3,7 +3,7 @@ name: Frontend CI/CD
 on:
   push:
     branches:
-      - dev
+      - main
 
 jobs:
   build:
@@ -13,12 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          ref: dev 
+          ref: main 
 
-      - name: Copy frontend files to VPS
-        run: |
+      - name: Déploiement sur le VPS
+      if: success() && github.ref == 'refs/heads/main'
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.SSH_IP }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
           scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }}:/docker/inventory-front
+          cd docker
+          sudo npm i
+          sudo docker-compose -f docker-compose.yml up --build -d
 
-      - name: Connect to VPS and start Docker Compose for frontend
-        run: |
-          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }} 'cd docker && docker-compose up -d'
