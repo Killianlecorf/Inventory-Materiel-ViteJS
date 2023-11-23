@@ -16,13 +16,16 @@ jobs:
         with:
           ref: main 
 
-      - name: Déploiement sur le VPS
-        if: success() && github.ref == 'refs/heads/main'
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_IP }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY_PORTABLE }}
-          script: |
-            scp -o StrictHostKeyChecking=no -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }}:/docker/inventory-front
-            ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }} 'cd /docker/inventory-front && sudo npm i && sudo docker-compose -f docker-compose.yml up --build -d'
+
+        - name: Déploiement sur le VPS
+          if: success() && github.ref == 'refs/heads/main'
+          uses: appleboy/ssh-action@master
+          with:
+            host: ${{ secrets.SSH_IP }}
+            username: ${{ secrets.SSH_USER }}
+            key: ${{ secrets.SSH_PRIVATE_KEY_PORTABLE }}
+            script: |
+              git clone -b main https://github.com/Killianlecorf/inventory-front /docker/inventory-front
+              cd docker/inventory-front
+              sudo npm i
+              sudo docker-compose -f docker-compose.yml up --build -d
