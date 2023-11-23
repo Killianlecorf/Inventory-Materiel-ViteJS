@@ -13,12 +13,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          ref: main 
+          ref: dev 
 
       - name: Copy frontend files to VPS
         run: |
-          scp -r . {{secrets.SSH_USER}}@{{secrets.SSH_IP}}:/docker/inventory-front
+          scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }}:/docker/inventory-front
 
       - name: Connect to VPS and start Docker Compose for frontend
         run: |
-          ssh {{secrets.SSH_USER}}@{{secrets.SSH_IP}} 'cd docker && docker-compose up -d'
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }} 'cd docker && docker-compose up -d'
