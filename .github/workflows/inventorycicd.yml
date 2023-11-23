@@ -1,0 +1,28 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: main 
+
+      - name: Merge dev into main
+        if: github.event_name == 'push' && github.event.ref == 'refs/heads/dev'
+        run: git merge --no-ff origin/dev
+
+      - name: Copy frontend files to VPS
+        run: |
+          scp -r . user@your_server:docker/inventory-front
+
+      - name: Connect to VPS and start Docker Compose for frontend
+        run: |
+          ssh {{secrets.SSH_USER}}@{{secrets.SSH_IP}} 'cd docker && docker-compose up -d'
