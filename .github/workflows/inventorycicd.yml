@@ -22,9 +22,10 @@ jobs:
         with:
           host: ${{ secrets.SSH_IP }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY_PORTABLE }}
           script: |
-            scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }}:/docker/inventory-front
-            cd docker
+            sudo git clone -b main https://github.com/Killianlecorf/inventory-front /docker/inventory-front
+            cd docker/inventory-front
             sudo npm i
+            sudo npm run build
             sudo docker-compose -f docker-compose.yml up --build -d
