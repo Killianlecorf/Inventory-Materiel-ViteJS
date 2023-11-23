@@ -15,10 +15,6 @@ jobs:
         with:
           ref: main 
 
-      - name: Merge dev into main
-        if: github.event_name == 'push' && github.event.ref == 'refs/heads/dev'
-        run: git merge --no-ff origin/dev
-
       - name: Copy frontend files to VPS
         run: |
           scp -r . user@your_server:docker/inventory-front
