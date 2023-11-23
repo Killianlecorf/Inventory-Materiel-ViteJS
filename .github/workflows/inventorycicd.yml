@@ -17,15 +17,14 @@ jobs:
           ref: main 
 
       - name: Déploiement sur le VPS
-      if: success() && github.ref == 'refs/heads/main'
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.SSH_IP }}
-        username: ${{ secrets.SSH_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        script: |
-          scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }}:/docker/inventory-front
-          cd docker
-          sudo npm i
-          sudo docker-compose -f docker-compose.yml up --build -d
-
+        if: success() && github.ref == 'refs/heads/main'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SSH_IP }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }}:/docker/inventory-front
+            cd docker
+            sudo npm i
+            sudo docker-compose -f docker-compose.yml up --build -d
