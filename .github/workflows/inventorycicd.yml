@@ -22,7 +22,7 @@ jobs:
         with:
           host: ${{ secrets.SSH_IP }}
           username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY_PORTABLE }}
           script: |
             scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }}:/docker/inventory-front
             cd docker
