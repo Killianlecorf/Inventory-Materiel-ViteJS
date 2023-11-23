@@ -26,6 +26,6 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY_PORTABLE }}
           script: |
             scp -r . ${{ secrets.SSH_USER }}@${{ secrets.SSH_IP }}:/docker/inventory-front
-            cd docker
+            cd docker/inventory-front
             sudo npm i
             sudo docker-compose -f docker-compose.yml up --build -d
