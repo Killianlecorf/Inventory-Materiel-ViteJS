@@ -24,8 +24,8 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY_PORTABLE }}
           script: |
-            sudo git pull origin main 
-            cd docker/inventory-front
+            sudo git pull origin main
+            cd /docker/inventory-front
             sudo npm i
             sudo npm run build
             sudo docker-compose up --build -d
