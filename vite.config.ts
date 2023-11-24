@@ -7,7 +7,7 @@ export default defineConfig({
     port: 8080,
     proxy: {
       '/api': {
-        target: 'http://localhost:5353/',
+        target: 'http://vps-3aa18acd.vps.ovh.net/:5353',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },
