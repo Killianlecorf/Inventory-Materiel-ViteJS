@@ -24,7 +24,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY_PORTABLE }}
           script: |
-            cd /docker
+            cd docker
             sudo rm -r inventory-front
             git clone https://github.com/Killianlecorf/inventory-front
             cd inventory-front
